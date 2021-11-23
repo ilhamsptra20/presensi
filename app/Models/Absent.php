@@ -12,12 +12,14 @@ class Absent extends Model
     protected $fillable = [
         'nis',
         'arrival_time',
-        'go_home_time',        
+        'go_home_time',
+        'description',
         'proof',
+        'date',
     ];
 
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class, 'nis');
     }
 }

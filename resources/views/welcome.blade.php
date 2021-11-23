@@ -35,12 +35,11 @@
                     <li class="nav-item">
                         <a class="nav-link link tebel-sedang" href="{{ route('home') }}">Home &nbsp;&nbsp;</a>
                     </li>
-                    @endauth
-                    @guest
+                    @else
                     <li class="nav-item">
                         <a class="nav-link active tebel-sedang rounded-pill bg-ungu shadow" href="{{ route('login') }}">Sign In</a>
                     </li>
-                    @endguest
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -52,19 +51,10 @@
 
         <div class="row mt-5 mb-5">
 
-            <div class="col-lg-12 gambar">
-                <img src="assets/img/vector-content.png" width="100%">
-            </div>
-
-            <div class="col-sm-12 position-relative p-4">
-
-                <div class="position-absolute top-0 end-0">
-                    <img src="assets/img/vector-content.png" class="img">
-                </div>
-
+            <div class="col-12 col-lg-5">
                 <h1 class="text-info"><b>Login</b></h1>
 
-                <div class="desc mt-4">
+                <div class="mt-4">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf                  
                         <div class="form-floating">
@@ -88,9 +78,12 @@
                             </label>
                         </div>
                         <button class="w-100 badge tebel-sedang rounded-pill bg-ungu shadow border-0 py-3 fs-4" type="submit">Sign In</button>
-                      </form>
+                    </form>
                 </div>
+            </div>
 
+            <div class="col-12 col-lg-7">
+                <img src="assets/img/vector-content.png" class="img">
             </div>
 
         </div>

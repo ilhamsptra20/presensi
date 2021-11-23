@@ -16,16 +16,6 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-                <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Search...">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <i class="nc-icon nc-zoom-split"></i>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <ul class="navbar-nav">
                 <li class="nav-item btn-rotate dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,15 +25,15 @@
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
                         <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button type="submit" class="dropdown-item">
                             <i class="nc-icon nc-minimal-right"></i>
                             Log Out</button>
                         </form>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
             </ul>

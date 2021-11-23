@@ -58,7 +58,7 @@ class Student extends Authenticatable
 
     public function absents()
     {
-        return $this->hasMany(Absent::class);
+        return $this->hasMany(Absent::class, 'nis');
     }
 
     public function user()

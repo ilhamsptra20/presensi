@@ -16,8 +16,9 @@ class CreateAbsentsTable extends Migration
         Schema::create('absents', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 8);
-            $table->dateTime('arrival_time')->nullable();
-            $table->dateTime('go_home_time')->nullable();
+            $table->date('date');
+            $table->time('arrival_time')->nullable();
+            $table->time('go_home_time')->nullable();
             $table->string('description');
             $table->string('proof')->nullable();
             $table->timestamps();

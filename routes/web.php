@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RayonController;
@@ -36,9 +37,12 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
 });
 
 // Student routes
+Route::middleware('auth:student')->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('student');
 Route::prefix('student')->middleware('auth:student')->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('student');
+    Route::get('absent-today', [AbsentController::class, 'index'])->name('today');
+    Route::get('absent-statistik/{name}', [AbsentController::class, 'statistik'])->name('statistik');
+    Route::post('arrival', [AbsentController::class, 'arrival']);
+    Route::put('go-home/{id}', [AbsentController::class, 'go_home']);
 });
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
