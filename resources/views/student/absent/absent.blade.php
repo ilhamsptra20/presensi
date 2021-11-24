@@ -13,27 +13,30 @@
                     @if ($today == null || $today->description == 'Masuk')
                         @if ($now >= $arrival )
                         
-                        @if ($now >= $homeTime)
-                            <form action="go-home/{{ $today->id }}" method="POST">
-                            <input type="hidden" name="go_home_time" value="{{ $now }}">
-                            @method('put')
-                            <input type="hidden" name="description" value="Masuk - Pulang">
+                            {{-- Pulang --}}
+                            @if ($now >= $homeTime)
+                                <form action="go-home/{{ $today->id }}" method="POST">
+                                <input type="hidden" name="go_home_time" value="{{ $now }}">
+                                @method('put')
+                                <input type="hidden" name="description" value="Masuk - Pulang">
 
-                        @elseif ($today == null && $now >= $notPresent)
-                            <form action="arrival" method="POST">
-                            <input type="hidden" name="description" value="Tidak Hadir">
-                            <h3>Lu Telat Goblok!!</h3>            
-                        
-                        @elseif ($today == null && $now >= $notPresent)
-                            <form action="arrival" method="POST">
-                            <input type="hidden" name="description" value="Masuk">
-                            <input type="hidden" name="arrival_time" value="{{ $now }}">
+                            {{-- Tidak Hadir --}}
+                            @elseif ($today == null && $now >= $notPresent)
+                                <form action="arrival" method="POST">
+                                <input type="hidden" name="description" value="Tidak Hadir">
+                                <h3>Lu Telat Goblok!!</h3>            
+                            
+                            {{-- Masuk --}}
+                            @elseif ($today == null && $now >= $timeAbsent)
+                                <form action="arrival" method="POST">
+                                <input type="hidden" name="description" value="Masuk">
+                                <input type="hidden" name="arrival_time" value="{{ $now }}">
                         @endif
                             @csrf
                             <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
                             <input type="hidden" name="nis" value="{{ Auth::user()->nis }}">
                             
-                            @if ($today != null && $now >= $notPresent)
+                            @if ($today != null || $now <= $notPresent)
                             <div class="d-flex justify-content-between w-50 mx-auto">
                                 <h5>Arrival Time</h5>
                                 <h5>:</h5>
@@ -47,7 +50,7 @@
                             @endif
 
                             <div class="d-flex justify-content-between w-50 mx-auto">
-                                <button type="submit" class="btn btn-primary py-1 w-100" ><h5 class="m-0">Submit</h5></button>
+                                <button type="submit" class="btn btn-primary py-1 w-100" {{ $today != null || $now <= $homeTime ? 'disabled' : '' }}><h5 class="m-0">Submit</h5></button>
                             </div>
                             </form>
                         @else

@@ -11,7 +11,7 @@ class AbsentController extends Controller
 {
     public function index()
     {
-        $hour = 16;
+        $hour = 6;
         $minutes = 0;
         $today = $this->absentToday();
         $timeAbsent = Carbon::createFromTime($hour, $minutes, 0);
@@ -19,7 +19,7 @@ class AbsentController extends Controller
         $lateness = Carbon::createFromTime($hour++, $minutes, 0);
         $notPresent = Carbon::createFromTime($hour += 6, $minutes, 0 );
         $homeTime = Carbon::createFromTime($hour += 8, $minutes, 0);
-        $now = Carbon::createFromTime(23, 0, 0);
+        $now = Carbon::now();
 
         return view('student.absent.absent', compact(
             'arrival',
@@ -27,7 +27,8 @@ class AbsentController extends Controller
             'homeTime',
             'now',
             'today',
-            'notPresent'
+            'notPresent',
+            'timeAbsent'
         ));
     }
 

@@ -17,7 +17,7 @@ class RombelController extends Controller
     {
         $rombels = Rombel::get();
 
-        return view('dashboard.groupStudent.rombel', compact('rombels'));
+        return view('dashboard.rombel', compact('rombels'));
     }
 
     /**

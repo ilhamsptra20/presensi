@@ -17,7 +17,7 @@ class RayonController extends Controller
     {
         $rayons = Rayon::get();
 
-        return view('dashboard.groupStudent.rayon', compact('rayons'));
+        return view('dashboard.rayon', compact('rayons'));
     }
 
     /**
@@ -60,7 +60,7 @@ class RayonController extends Controller
     {
         $students = $rayon->students()->get();
         
-        return view('dashboard.groupStudent.students', compact('students', 'rayon'));
+        return view('dashboard.rayon', compact('students', 'rayon'));
     }
 
     /**

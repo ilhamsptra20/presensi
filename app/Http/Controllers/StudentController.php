@@ -16,7 +16,7 @@ class StudentController extends Controller
     {
         $students = Student::get();
 
-        return view('dashboard.groupStudent.students', compact('students'));
+        return view('dashboard.student', compact('students'));
     }
 
     /**

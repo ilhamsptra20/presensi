@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/body.css">
 
-    <title>Landing Page 2</title>
+    <title>Welcome</title>
 </head>
 
 <body>
@@ -54,7 +54,7 @@
             <div class="col-12 col-lg-5">
                 <h1 class="text-info"><b>Login</b></h1>
 
-                <div class="mt-4">
+                <div class="form-signin mt-4">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf                  
                         <div class="form-floating">
