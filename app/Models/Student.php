@@ -61,6 +61,11 @@ class Student extends Authenticatable
         return $this->hasMany(Absent::class, 'nis');
     }
 
+    public function borrowBook()
+    {
+        return $this->hasMany(BorrowingBook::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

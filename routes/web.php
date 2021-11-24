@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\AbsentController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RayonController;
 use App\Http\Controllers\RombelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\WriterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +38,17 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::resource('rayon', RayonController::class);
     Route::resource('rombel', RombelController::class);
     Route::resource('student', StudentController::class);
+    Route::resource('book', BookController::class);
+    Route::resource('publisher', PublisherController::class);
+    Route::resource('writer', WriterController::class);
 });
 
 // Student routes
 Route::middleware('auth:student')->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('student');
-Route::prefix('student')->middleware('auth:student')->group(function () {
+Route::prefix('')->middleware('auth:student')->group(function () {
     Route::get('absent-today', [AbsentController::class, 'index'])->name('today');
     Route::get('absent-statistik/{name}', [AbsentController::class, 'statistik'])->name('statistik');
+    Route::get('library', [LibraryController::class]);
     Route::post('arrival', [AbsentController::class, 'arrival']);
     Route::put('go-home/{id}', [AbsentController::class, 'go_home']);
 });

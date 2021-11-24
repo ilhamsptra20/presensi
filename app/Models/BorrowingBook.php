@@ -17,4 +17,14 @@ class BorrowingBook extends Model
         'date_return',
         'mulct',
     ];
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

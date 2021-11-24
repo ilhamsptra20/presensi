@@ -20,7 +20,7 @@ class CreateBorrowingBooksTable extends Migration
             $table->date('borrow');
             $table->date('return');
             $table->date('date_return')->nullable();
-            $table->int('mulct');
+            $table->integer('mulct');
             $table->timestamps();
         });
     }
