@@ -14,11 +14,11 @@ class AbsentController extends Controller
         $hour = 6;
         $minutes = 0;
         $today = $this->absentToday();
-        $timeAbsent = Carbon::createFromTime($hour, $minutes, 0);
-        $arrival = Carbon::createFromTime($hour, $minutes, 0);
-        $lateness = Carbon::createFromTime($hour++, $minutes, 0);
-        $notPresent = Carbon::createFromTime($hour += 6, $minutes, 0 );
-        $homeTime = Carbon::createFromTime($hour += 8, $minutes, 0);
+        $timeAbsent = Carbon::createFromTime($hour, $minutes);
+        $arrival = Carbon::createFromTime($hour, $minutes);
+        $lateness = Carbon::createFromTime($hour++, $minutes);
+        $notPresent = Carbon::createFromTime($hour += 6, $minutes);
+        $homeTime = Carbon::createFromTime($hour += 8, $minutes);
         $now = Carbon::now();
 
         return view('student.absent.absent', compact(

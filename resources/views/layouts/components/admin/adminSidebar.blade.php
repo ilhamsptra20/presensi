@@ -23,4 +23,10 @@
             <p>Rayon</p>
         </a>
     </li>
+    <li class="{{ request()->is('admin/book*')? 'active' : '' }}">
+        <a href="{{ route('book.index') }}">
+            <i class="nc-icon nc-book-bookmark"></i>
+            <p>Book</p>
+        </a>
+    </li>
 </ul>

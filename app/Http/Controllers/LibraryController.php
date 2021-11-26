@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LibraryController extends Controller
 {
@@ -20,13 +21,16 @@ class LibraryController extends Controller
 
     public function borrow(Request $request, Book $book)
     {
-        $request->validate([
-            'student_id',
+        $borrow = $request->validate([
             'book_id',
             'borrow',
             'return',
             'date_return',
             'mulct',
         ]);
+
+        $borrow['student_id'] = Auth::user()->id;
+
+        Book::create($borrow);
     }
 }

@@ -41,6 +41,11 @@ class LoginController extends Controller
         $this->middleware('guest:student')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        return view('welcome');
+    }
+
     protected function Login(Request $request)
     {
         if (Auth::guard('admin')->attempt(['email' => $request['email'], 'password' => $request['password']])) {
@@ -57,4 +62,6 @@ class LoginController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
+    
 }

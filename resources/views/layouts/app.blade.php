@@ -21,7 +21,7 @@
     <div class="wrapper ">
         @include('layouts.components.sidebar')
         
-        <div class="main-panel" style="height: 100vh;">
+        <div class="main-panel overflow-auto" style="height: 100%;">
             <!-- Navbar -->
             @include('layouts.components.header')
             <!-- End Navbar -->
@@ -34,7 +34,6 @@
             </div>
             
             
-            @include('layouts.components.footer')
         </div>
     </div>
 

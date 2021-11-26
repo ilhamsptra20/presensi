@@ -50,7 +50,7 @@
                             @endif
 
                             <div class="d-flex justify-content-between w-50 mx-auto">
-                                <button type="submit" class="btn btn-primary py-1 w-100" {{ $today != null || $now <= $homeTime ? 'disabled' : '' }}><h5 class="m-0">Submit</h5></button>
+                                <button type="submit" class="btn btn-primary py-1 w-100" {{ $today != null && $now <= $homeTime ? 'disabled' : '' }}><h5 class="m-0">Submit</h5></button>
                             </div>
                             </form>
                         @else

@@ -28,8 +28,9 @@ Route::get('/', function () {
 });
 
 
-// Route::get('home', )
-Auth::routes();
+Auth::routes([
+    'register'=> false, 
+]);
 
 // Admin routes
 Route::middleware('auth:admin')->get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -47,8 +48,10 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
 Route::middleware('auth:student')->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('student');
 Route::prefix('')->middleware('auth:student')->group(function () {
     Route::get('absent-today', [AbsentController::class, 'index'])->name('today');
-    Route::get('absent-statistik/{name}', [AbsentController::class, 'statistik'])->name('statistik');
-    Route::get('library', [LibraryController::class]);
+    Route::get('absent-statistik', [AbsentController::class, 'statistik'])->name('statistik');
+    Route::get('library', [LibraryController::class, 'index'])->name('library');
+    Route::get('book', [LibraryController::class, 'show'])->name('library.book');
+    Route::post('borrow', [LibraryController::class, 'borrow'])->name('library.borrow');
     Route::post('arrival', [AbsentController::class, 'arrival']);
     Route::put('go-home/{id}', [AbsentController::class, 'go_home']);
 });
